@@ -21,7 +21,7 @@ public class project {
                 call.setCallerName(scanner.nextLine());
                 System.out.println("Enter a brief description of the emergency:");
                 call.setDescription(scanner.nextLine());
-                System.out.println("Enter 1 to request fire service, 2 to request police service, 3 to request ambulance service, or any combination of these (e.g. 12 for fire and police):");
+                System.out.println("Enter 1 to request fire service, 2 to request police service, 3 to request ambulance service, or any combination of these to request multiple services:");
                 int serviceType = scanner.nextInt();
                 if (serviceType % 10 == 1) {
                     fireCalls.add(call);
