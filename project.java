@@ -28,10 +28,17 @@ class Project {
                 System.out.println("Enter 1 to request fire service, 2 to request police service, 3 to request ambulance service, or any combination of these to request multiple services:");
                 int serviceType = scanner.nextInt();
                 if (serviceType % 10 == 1) {
+                    call.setDescription(call.getDescription() + " fire in the house");
                     fireCalls.add(call);
                 }
                 if (serviceType % 10 == 2) {
                     policeCalls.add(call);
+                    if (serviceType == 12) {
+                        EmergencyCall fireCall = new EmergencyCall();
+                        fireCall.setCallerName(call.getCallerName());
+                        fireCall.setDescription(call.getDescription() + " fire in the house");
+                        fireCalls.add(fireCall);
+                    }
                 }
                 if (serviceType % 10 == 3) {
                     ambulanceCalls.add(call);
@@ -81,8 +88,8 @@ class EmergencyCall implements Comparable<EmergencyCall> {
     void setDescription(String description) {
         this.description = description;
     }
-
-    String getCallerName() {
+    
+     String getCallerName() {
         return callerName;
     }
 
@@ -93,4 +100,6 @@ class EmergencyCall implements Comparable<EmergencyCall> {
     public int compareTo(EmergencyCall other) {
         return this.callerName.compareTo(other.callerName);
     }
+    
 }
+
