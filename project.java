@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Scanner;
 
-public class project {
+class project {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
@@ -57,7 +57,7 @@ public class project {
         }
     }
     
-    private static void printCalls(ArrayList<EmergencyCall> calls) {
+    static void printCalls(ArrayList<EmergencyCall> calls) {
         Collections.sort(calls);
         for (int i = 0; i < calls.size(); i++) {
             EmergencyCall call = calls.get(i);
@@ -68,26 +68,25 @@ public class project {
 }
 
 class EmergencyCall implements Comparable<EmergencyCall> {
-    private String callerName;
-    private String description;
+    String callerName;
+    String description;
 
-    public void setCallerName(String callerName) {
+    void setCallerName(String callerName) {
         this.callerName = callerName;
     }
 
-    public void setDescription(String description) {
+    void setDescription(String description) {
         this.description = description;
     }
 
-    public String getCallerName() {
+    String getCallerName() {
         return callerName;
     }
 
-    public String getDescription() {
+    String getDescription() {
         return description;
     }
 
-   
     public int compareTo(EmergencyCall other) {
         return this.callerName.compareTo(other.callerName);
     }
