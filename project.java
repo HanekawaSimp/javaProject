@@ -5,28 +5,24 @@ import java.util.Scanner;
 class project {
 
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
+        Scanner sc = new Scanner(System.in);
         ArrayList<EmergencyCall> fireCalls = new ArrayList<>();
         ArrayList<EmergencyCall> policeCalls = new ArrayList<>();
         ArrayList<EmergencyCall> ambulanceCalls = new ArrayList<>();
         
         while (true) {
-            System.out.println("Choose an option:");
-            System.out.println("1. Record a call");
-            System.out.println("2. Remove a call");
-            System.out.println("3. Generate reports");
-            System.out.println("4. Quit");
-            int choice = scanner.nextInt();
+            System.out.println("Enter 1 to record a call, 2 to remove a call, 3 to generate reports, or 4 to quit:");
+            int choice = sc.nextInt();
             
             if (choice == 1) {
                 EmergencyCall call = new EmergencyCall();
                 System.out.println("Enter the caller's name:");
-                scanner.nextLine();
-                call.setCallerName(scanner.nextLine());
+                sc.nextLine();
+                call.setCallerName(sc.nextLine());
                 System.out.println("Enter a brief description of the emergency:");
-                call.setDescription(scanner.nextLine());
+                call.setDescription(sc.nextLine());
                 System.out.println("Enter 1 to request fire service, 2 to request police service, 3 to request ambulance service, or any combination of these to request multiple services:");
-                int serviceType = scanner.nextInt();
+                int serviceType = sc.nextInt();
                 if (serviceType % 10 == 1) {
                     fireCalls.add(call);
                 }
@@ -37,13 +33,10 @@ class project {
                     ambulanceCalls.add(call);
                 }
             } else if (choice == 2) {
-                System.out.println("Choose a service to remove a call from:");
-                System.out.println("1. Fire service");
-                System.out.println("2. Police service");
-                System.out.println("3. Ambulance service");
-                int serviceType = scanner.nextInt();
+                System.out.println("Enter 1 to remove a fire call, 2 to remove a police call, 3 to remove an ambulance call:");
+                int serviceType = sc.nextInt();
                 System.out.println("Enter the index of the call to remove:");
-                int index = scanner.nextInt() - 1;
+                int index = sc.nextInt() - 1;
                 if (serviceType == 1) {
                     fireCalls.remove(index);
                 } else if (serviceType == 2) {
