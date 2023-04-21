@@ -11,7 +11,11 @@ class project {
         ArrayList<EmergencyCall> ambulanceCalls = new ArrayList<>();
         
         while (true) {
-            System.out.println("Enter 1 to record a call, 2 to remove a call, 3 to generate reports, or 4 to quit:");
+            System.out.println("Choose an option:");
+            System.out.println("1. Record a call");
+            System.out.println("2. Remove a call");
+            System.out.println("3. Generate reports");
+            System.out.println("4. Quit");
             int choice = scanner.nextInt();
             
             if (choice == 1) {
@@ -33,7 +37,10 @@ class project {
                     ambulanceCalls.add(call);
                 }
             } else if (choice == 2) {
-                System.out.println("Enter 1 to remove a fire call, 2 to remove a police call, 3 to remove an ambulance call:");
+                System.out.println("Choose a service to remove a call from:");
+                System.out.println("1. Fire service");
+                System.out.println("2. Police service");
+                System.out.println("3. Ambulance service");
                 int serviceType = scanner.nextInt();
                 System.out.println("Enter the index of the call to remove:");
                 int index = scanner.nextInt() - 1;
