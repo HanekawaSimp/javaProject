@@ -101,6 +101,8 @@ class Project {
             printCalls(ambulanceCalls);
         } else if (choice.equals("4")) {
             break;
+        } else {
+            System.out.println("Invalid input. Please try again");
         }
     }
 }
