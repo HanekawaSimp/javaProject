@@ -27,56 +27,92 @@ class Project {
                 call.setDescription(scanner.nextLine());
                 System.out.println("Enter 1 to request fire service, 2 to request police service, 3 to request ambulance service, or any combination of these to request multiple services:");
                 int serviceType = scanner.nextInt();
-                if (serviceType % 10 == 1) {
-                    call.setDescription(call.getDescription() + " fire in the house");
+                if (serviceType == 1) {
+                    call.setDescription(call.getDescription());
                     fireCalls.add(call);
                 }
-                if (serviceType % 10 == 2) {
+                if (serviceType == 2) {
                     policeCalls.add(call);
-                    if (serviceType == 12) {
-                        EmergencyCall fireCall = new EmergencyCall();
-                        fireCall.setCallerName(call.getCallerName());
-                        fireCall.setDescription(call.getDescription() + " fire in the house");
-                        fireCalls.add(fireCall);
-                    }
                 }
-                if (serviceType % 10 == 3) {
+                if (serviceType == 3) {
                     ambulanceCalls.add(call);
                 }
-            } else if (choice.equals("2")) {
-                System.out.println("Enter 1 to remove a fire call, 2 to remove a police call, 3 to remove an ambulance call:");
-                int serviceType = scanner.nextInt();
-                System.out.println("Enter the index of the call to remove:");
-                int index = scanner.nextInt() - 1;
-                if (serviceType == 1) {
-                    fireCalls.remove(fireCalls.toArray()[index]);
-                } else if (serviceType == 2) {
-                    policeCalls.remove(policeCalls.toArray()[index]);
-                } else if (serviceType == 3) {
-                    ambulanceCalls.remove(ambulanceCalls.toArray()[index]);
+                if (serviceType == 12) {
+                    EmergencyCall fireCall = new EmergencyCall();
+                    fireCall.setCallerName(call.getCallerName());
+                    fireCall.setDescription(call.getDescription());
+                    fireCalls.add(fireCall);
+                    EmergencyCall policeCall = new EmergencyCall();
+                    policeCall.setCallerName(call.getCallerName());
+                    policeCall.setDescription(call.getDescription());
+                    policeCalls.add(policeCall);
                 }
-            } else if (choice.equals("3")) {
-                System.out.println("Fire calls:");
-                printCalls(fireCalls);
-                System.out.println("Police calls:");
-                printCalls(policeCalls);
-                System.out.println("Ambulance calls:");
-                printCalls(ambulanceCalls);
-            } else if (choice.equals("4")) {
-                break;
+                if (serviceType == 13) {
+                    EmergencyCall fireCall = new EmergencyCall();
+                    fireCall.setCallerName(call.getCallerName());
+                    fireCall.setDescription(call.getDescription());
+                    fireCalls.add(fireCall);
+                    EmergencyCall ambulanceCall = new EmergencyCall();
+                    ambulanceCall.setCallerName(call.getCallerName());
+                    ambulanceCall.setDescription(call.getDescription());
+                    ambulanceCalls.add(ambulanceCall);
+                }
+                if (serviceType == 23) {
+                    EmergencyCall policeCall = new EmergencyCall();
+                    policeCall.setCallerName(call.getCallerName());
+                    policeCall.setDescription(call.getDescription());
+                    policeCalls.add(policeCall);
+                    EmergencyCall ambulanceCall = new EmergencyCall();
+                    ambulanceCall.setCallerName(call.getCallerName());
+                    ambulanceCall.setDescription(call.getDescription());
+                    ambulanceCalls.add(ambulanceCall);
+                }
+                if (serviceType == 123) {
+                    EmergencyCall fireCall = new EmergencyCall();
+                    fireCall.setCallerName(call.getCallerName());
+                    fireCall.setDescription(call.getDescription());
+                    fireCalls.add(fireCall);
+                    EmergencyCall policeCall = new EmergencyCall();
+                    policeCall.setCallerName(call.getCallerName());
+                    policeCall.setDescription(call.getDescription());
+                    policeCalls.add(policeCall);
+                    EmergencyCall ambulanceCall = new EmergencyCall();
+                    ambulanceCall.setCallerName(call.getCallerName());
+                    ambulanceCall.setDescription(call.getDescription());
+                    ambulanceCalls.add(ambulanceCall);
+                }
+            } else if (choice.equals("2")) {System.out.println("Enter 1 to remove a fire call, 2 to remove a police call, 3 to remove an ambulance call:");
+            int serviceType = scanner.nextInt();
+            System.out.println("Enter the index of the call to remove:");
+            int index = scanner.nextInt() - 1;
+            if (serviceType == 1) {
+                fireCalls.remove(fireCalls.toArray()[index]);
+            } else if (serviceType == 2) {
+                policeCalls.remove(policeCalls.toArray()[index]);
+            } else if (serviceType == 3) {
+                ambulanceCalls.remove(ambulanceCalls.toArray()[index]);
             }
-        }
-    }
-
-    static void printCalls(TreeSet<EmergencyCall> calls) {
-        int index = 1;
-        for (EmergencyCall call : calls) {
-            System.out.println(index + ". " + call.getCallerName() + ": " + call.getDescription());
-            index++;
+        } else if (choice.equals("3")) {
+            System.out.println("Fire calls:");
+            printCalls(fireCalls);
+            System.out.println("Police calls:");
+            printCalls(policeCalls);
+            System.out.println("Ambulance calls:");
+            printCalls(ambulanceCalls);
+        } else if (choice.equals("4")) {
+            break;
         }
     }
 }
 
+static void printCalls(TreeSet<EmergencyCall> calls) {
+    int index = 1;
+    for (EmergencyCall call : calls) {
+        System.out.println(index + ". " + call.getCallerName() + ": " + call.getDescription());
+        index++;
+    }
+}
+}
 class EmergencyCall implements Comparable<EmergencyCall> {
     String callerName;
     String description;
@@ -102,4 +138,3 @@ class EmergencyCall implements Comparable<EmergencyCall> {
     }
     
 }
-
